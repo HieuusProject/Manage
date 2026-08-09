@@ -1,0 +1,205 @@
+.header{
+    border-bottom: 1px solid #ddd;
+    padding: 10px 0;
+    background-color: #28a745;
+}
+
+
+.header .inner-logo img {
+    max-height: 50px;
+    max-width: 100%;
+}
+.header .inner-menu > ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+}
+
+.header .inner-menu > ul > li {
+    margin-left: 20px;
+}
+
+.footer{
+    background:#333;
+    color:#fff;
+    text-align: center;
+    padding: 10px;
+}
+
+/* --- Tiêu đề trang (Tùy chọn thêm để giống hình 2) --- */
+.box-head .inner-title {
+  color: #28a745;
+  font-size: 32px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+/* --- Định dạng khung chứa 1 sản phẩm --- */
+.product-item {
+  background-color: #ffffff;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px; /* Bo góc */
+  overflow: hidden; /* Cắt phần ảnh thừa để bo góc được áp dụng lên cả ảnh */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4); /* Đổ bóng nhẹ tạo chiều sâu */
+}
+
+/* --- Định dạng phần hình ảnh --- */
+.product-item .inner-image img {
+  width: 100%; /* Ảnh luôn rộng bằng khung chứa */
+  height: auto;
+  aspect-ratio: 4 / 3; /* Giữ tỉ lệ ảnh cho đều nhau, bạn có thể đổi thành 1/1 nếu muốn vuông */
+  object-fit: cover; /* Cắt gọn ảnh, không bị méo */
+  display: block;
+}
+
+/* --- Định dạng phần khoảng không chứa chữ --- */
+.product-item .inner-content {
+  padding: 15px; /* Tạo khoảng trống giữa viền và chữ */
+}
+
+/* --- Tên sản phẩm --- */
+.product-item .inner-title {
+  font-size: 20px;
+  font-weight: 500;
+  color: #333;
+  margin-top: 0;
+  margin-bottom: 15px;
+}
+
+/* --- Giá mới --- */
+.product-item .inner-price-new {
+  color: #28a745; /* Màu xanh lá */
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+/* --- Giá cũ --- */
+.product-item .inner-price-old {
+  color: #dc3545; /* Màu đỏ */
+  font-size: 16px;
+  font-weight: bold;
+  text-decoration: line-through; /* Đường gạch ngang chữ */
+  margin-bottom: 10px;
+}
+
+/* --- Phần trăm giảm giá --- */
+.product-item .inner-discount {
+  display: inline-block;
+  background-color: #dc3545; /* Nền đỏ */
+  color: #ffffff; /* Chữ trắng */
+  padding: 4px 12px;
+  border-radius: 8px; /* Bo góc như nút bấm */
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.product-item {
+    display: block;
+    color: inherit;
+    text-decoration: none;
+}
+/* ==========================================================================
+   TRANG CHI TIẾT SẢN PHẨM — nền trắng, chữ đen
+   ========================================================================== */
+
+.detail-page {
+    background: #ffffff;
+    color: #111111;
+}
+
+/* ---- Khối ảnh sản phẩm ---- */
+.thumbnail-box {
+    position: relative;
+    width: 100%;
+    min-height: 420px;
+    border: 1px solid #dcdcdc;
+    border-radius: 8px;
+    background: #fafafa;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.thumbnail-box__img {
+    max-width: 100%;
+    max-height: 420px;
+    object-fit: contain;
+}
+
+.thumbnail-box__empty {
+    color: #9a9a9a;
+    font-size: 14px;
+}
+
+/* Badge trạng thái — góc trên phải, đè lên ảnh */
+.thumbnail-box__status {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    padding: 4px 12px;
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 600;
+    color: #fff;
+}
+.thumbnail-box__status.is-active   { background: #16a34a; }
+.thumbnail-box__status.is-inactive { background: #6b7280; }
+
+/* Badge vị trí — góc dưới trái, đè lên ảnh */
+.thumbnail-box__position {
+    position: absolute;
+    bottom: 12px;
+    left: 12px;
+    padding: 4px 12px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 600;
+    background: #111111;
+    color: #ffffff;
+}
+
+/* ---- Các trường thông tin bên phải ---- */
+.detail-field {
+    border: 1px solid #dcdcdc;
+    border-radius: 8px;
+    padding: 12px 16px;
+    background: #ffffff;
+}
+
+.detail-field--sub {
+    height: 100%;
+}
+
+.detail-field__label {
+    display: block;
+    font-size: 12px;
+    font-weight: 600;
+    color: #6b7280;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+    margin-bottom: 4px;
+}
+
+.detail-field__value {
+    margin: 0;
+    font-size: 16px;
+    color: #111111;
+    word-break: break-word;
+}
+
+/* ---- Nút hành động (đồng bộ style với trang Products Listing) ---- */
+.detail-actions {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.detail-actions .btn {
+    min-width: 90px;
+}

@@ -1,0 +1,21 @@
+mixin pages(currentpages,totalpage)
+    ul(class="pagination")
+        if(currentpages > 1)
+            li(class="page-item")
+                button(
+                    class="page-link"
+                    buttonpani = currentpages-1
+                    ) Trang trước
+
+        - for (var i = 1; i <= totalpage ;i++)
+            li(class=`page-item ${currentpages == i ? "active" : ""}`)
+                button(
+                    class="page-link"
+                    buttonpani = i
+                ) #{i}
+        if(currentpages < totalpage)
+            li(class="page-item")
+                button(
+                    class="page-link"
+                    buttonpani = currentpages+1
+                    ) Kế tiếp

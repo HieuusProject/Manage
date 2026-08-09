@@ -1,0 +1,127 @@
+extends ../../layout/default.pug
+block main
+    - if (messages.error)
+        .message.info 
+            div(
+                class="alert alert-danger"
+                data-timeset = "5000"
+                show-alert
+            ) #{messages.error} 
+
+    h1(class="mb-4") Repairing Product
+    form(
+        action = `/admin/products/edit/${product.id}?_method=PATCH`
+        id="form-create-product"
+        enctype="multipart/form-data"
+        method="POST"
+    )
+        div(class="form-group")
+            label(for="title") Title
+            input(
+                type="text"
+                class="form-control"
+                id="title"
+                name="title"
+                value=product.title
+            )
+
+        div(class="form-group")
+            label(for="desc") Description
+            textarea(
+                class="form-control"
+                id="desc"
+                name="description"
+                rows="5"
+            ) #{product.description}
+
+        div(class="form-group")
+            label(for="price") Price
+            input(
+                type="number"
+                class="form-control"
+                id="price"
+                name="price"
+                mim="0"
+                value=product.price
+            )
+        div(class="form-group")
+            label(for="discount") Discout Percent
+            input(
+                type="number"
+                class="form-control"
+                id="discount"
+                name="discountPercentage"
+                min="0"
+                value=product.discountPercentage
+            )
+        div(class="form-group")
+            label(for="stock") Stock
+            input(
+                type="number"
+                class="form-control"
+                id="stock"
+                name="stock"
+                min="0"
+                value=product.stock
+            )
+        div(
+            class="form-group"
+            upload-imagine
+        )
+            label(for="thumbnail") Imagine
+            input(
+                type="file"
+                class="form-control-file"
+                id="thumbnail"
+                name="thumbnail"
+                accept="image/*"
+                upload-imagine-input
+            )
+            img(
+                src=product.thumbnail
+                upload-preview
+                class="previrew-up"
+            )
+        div(class="form-group")
+            label(for="position") Position
+            input(
+                type="number"
+                class="form-control"
+                id="position"
+                name="position"
+                placeholder="Automatical"
+                min="1"
+                value=product.position
+            )
+        div(class="form-group form-check form-check-inline")
+            input(
+                type="radio"
+                class="form-check-input"
+                id="statusActive"
+                name="status"
+                value="active"
+                checked=(product.status == "active" ? true : false)
+            )
+            label(for="statusActive" class="form-check-label") Active
+        div(class="form-group form-check form-check-inline")
+            input(
+                type="radio"
+                class="form-check-input"
+                id="statusInActive"
+                name="status"
+                value="inactive"
+                checked=(product.status == "inactive" ? true : false)
+            )
+            label(for="statusInActive" class="form-check-label") Inactive
+        div(class="form-group")
+            button(
+                type="submit"
+                class="btn btn-primary"
+        ) Updating
+
+    script(src="/admin/js/product.js")
+
+
+
+
+

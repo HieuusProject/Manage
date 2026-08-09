@@ -1,0 +1,100 @@
+/* ==========================================================================
+   TRANG CHI TIẾT SẢN PHẨM — nền trắng, chữ đen
+   ========================================================================== */
+
+.detail-page {
+    background: #ffffff;
+    color: #111111;
+}
+
+/* ---- Khối ảnh sản phẩm ---- */
+.thumbnail-box {
+    position: relative;
+    width: 100%;
+    min-height: 420px;
+    border: 1px solid #dcdcdc;
+    border-radius: 8px;
+    background: #fafafa;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.thumbnail-box__img {
+    max-width: 100%;
+    max-height: 420px;
+    object-fit: contain;
+}
+
+.thumbnail-box__empty {
+    color: #9a9a9a;
+    font-size: 14px;
+}
+
+/* Badge trạng thái — góc trên phải, đè lên ảnh */
+.thumbnail-box__status {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    padding: 4px 12px;
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 600;
+    color: #fff;
+}
+.thumbnail-box__status.is-active   { background: #16a34a; }
+.thumbnail-box__status.is-inactive { background: #6b7280; }
+
+/* Badge vị trí — góc dưới trái, đè lên ảnh */
+.thumbnail-box__position {
+    position: absolute;
+    bottom: 12px;
+    left: 12px;
+    padding: 4px 12px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 600;
+    background: #111111;
+    color: #ffffff;
+}
+
+/* ---- Các trường thông tin bên phải ---- */
+.detail-field {
+    border: 1px solid #dcdcdc;
+    border-radius: 8px;
+    padding: 12px 16px;
+    background: #ffffff;
+}
+
+.detail-field--sub {
+    height: 100%;
+}
+
+.detail-field__label {
+    display: block;
+    font-size: 12px;
+    font-weight: 600;
+    color: #6b7280;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+    margin-bottom: 4px;
+}
+
+.detail-field__value {
+    margin: 0;
+    font-size: 16px;
+    color: #111111;
+    word-break: break-word;
+}
+
+/* ---- Nút hành động (đồng bộ style với trang Products Listing) ---- */
+.detail-actions {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.detail-actions .btn {
+    min-width: 90px;
+}

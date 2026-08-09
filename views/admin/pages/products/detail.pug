@@ -1,0 +1,58 @@
+extends ../../layout/default.pug
+
+block main
+    h1(class="mb-4") In Products
+    //- product là biến được truyền từ controller sang
+
+    .detail-page
+        .row
+            //- ============ CỘT TRÁI: ẢNH SẢN PHẨM ============
+            .col-md-5.mb-4
+                .thumbnail-box
+                    if product.thumbnail
+                        img.thumbnail-box__img(src=product.thumbnail alt=product.title)
+                    else
+                        .thumbnail-box__empty No Iamge
+
+                    span.thumbnail-box__status(
+                        class=product.status == "active" ? "is-active" : "is-inactive"
+                    )= product.status == "active" ? "Active" : "Inactive"
+
+                    span.thumbnail-box__position Vị trí: #{product.position}
+
+            //- ============ CỘT PHẢI: THÔNG TIN SẢN PHẨM ============
+            .col-md-7.mb-4
+                .detail-field.mb-3
+                    label.detail-field__label Title
+                    p.detail-field__value= product.title
+
+                .detail-field.mb-3
+                    label.detail-field__label Price
+                    p.detail-field__value $#{product.price}
+
+                .row.mb-3
+                    .col-8
+                        .detail-field.detail-field--sub
+                            label.detail-field__label After Percentage
+                            p.detail-field__value $#{product.priceNew || product.price}
+                    .col-4
+                        .detail-field.detail-field--sub
+                            label.detail-field__label DiscountPercentage
+                            p.detail-field__value #{product.discountPercentage}%
+
+                .detail-field.mb-3
+                    label.detail-field__label Description
+                    p.detail-field__value= product.description || "Chưa có mô tả"
+
+                .detail-field.mb-4
+                    label.detail-field__label Deleted
+                    p.detail-field__value
+                        span.badge(class=product.deleted ? "bg-danger" : "bg-success")
+                            = product.deleted ? "deleted: true" : "deleted: false"
+
+                //- ============ NÚT HÀNH ĐỘNG (giống trang Products) ============
+                .detail-actions
+                    a.btn.btn-secondary(href="/admin/products") Back
+                    a.btn.btn-warning(href=`/admin/products/edit/${product._id}`) Edit
+
+    script(src="/admin/js/product.js")

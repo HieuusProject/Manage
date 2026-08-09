@@ -1,0 +1,10 @@
+mixin filter-more(filterMore)
+    each item in filterMore
+        .form-check.form-check-inline
+            input.form-check-input(
+                type="checkbox"
+                filter-more=item.key
+                checked=item.checked
+            )
+            label.form-check-label #{item.name}
+    button#btn-filter-more.btn.btn-sm.btn-primary.ml-2 Filter

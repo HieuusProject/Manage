@@ -22,14 +22,14 @@ app.use(flash());
 
 app.use(methodOverride('_method'))
 app.use(bodyParser.urlencoded({ extended: false}));
-app.set("views", "./views");
+app.set("views", `${__dirname}/views`);
 app.set('view engine', 'pug');
 
 router(app);//lời gọi hàm
 adminrouter(app);
 
 app.locals.prefixadmin = systemconfig.prefixadmin
-app.use(express.static("publics"));
+app.use(express.static(`${__dirname}/publics`));
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);

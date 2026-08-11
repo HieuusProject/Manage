@@ -1,8 +1,10 @@
 const express = require("express");
 const multer  = require('multer')
-const storageMulter = require("../../helpers/multer.js");
+const uploadCloudinary = require('../../middleware/admin/uploadcloudi.js')
+// const storageMulter = require("../../helpers/multer.js");
 const router = express.Router();//ham cua express, tao ra cac router 
-const upload = multer({ storage: storageMulter() })
+//cloudinary:
+const upload = multer()
 const controller = require("../../controllers/admin/productcontrol.js");
 const validate = require("../../validates/admin/validate-products.js");
 router.get('/',controller.index);
@@ -12,6 +14,7 @@ router.delete("/delete/:id",controller.deleteitem);
 router.get('/create',controller.create);
 router.post('/create',
     upload.single('thumbnail'),
+    uploadCloudinary.upload,
     validate.createPost,
     controller.createPost
 );

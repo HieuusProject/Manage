@@ -3,6 +3,7 @@ const methodOverride = require('method-override');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const multer  = require('multer')
+const path = require('path')
 const session = require('express-session');
 const flash = require('express-flash')
 const databased = require("./config/databased.js");
@@ -19,6 +20,8 @@ const port = process.env.PORT;
 app.use(cookieParser('keyboard cat'));
 app.use(session({ cookie: { maxAge: 60000}}));
 app.use(flash());
+
+app.use('/tinymce',express.static(path.join(__dirname, 'node_modules','tinymce')))
 
 app.use(methodOverride('_method'))
 app.use(bodyParser.urlencoded({ extended: false}));

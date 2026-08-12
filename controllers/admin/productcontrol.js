@@ -29,8 +29,15 @@ module.exports.index = async (req, res) => {
         req.query,
         countproducts
     );
+    //sort
+    let sort = {}
+    if(req.query.sortkey && req.query.sortvalue){
+        sort[req.query.sortkey] = req.query.sortvalue;
+    } else{
+        sort.position = "desc";
+    }
     //TOTAL
-    const products = await Products.find(find).sort({position: "desc"}).limit(objectpani.limititem).skip(objectpani.skip);
+    const products = await Products.find(find).sort(sort).limit(objectpani.limititem).skip(objectpani.skip);
     res.render("admin/pages/products/index",{
         pageTitle: "Products",
         products: products,

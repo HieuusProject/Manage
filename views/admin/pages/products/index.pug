@@ -20,9 +20,31 @@ block main
     .card.mb-3
         .card-header Filting and Findout
         .card-body
+            .row 
+            .col-4
+                div(
+                    sort
+                    )
+                    select(
+                        class="form-control"
+                        name="sort"
+                        sort-select
+                    )
+                        option(value="position-desc") Gradually Decrease
+                        option(value="position-asc") Gradually Increase
+                        option(value="price-desc") Grdually Increasing prices
+                        option(value="price-asc") Price Descending
+                        option(value="title-asc") Alphabet
+                        option(value="title-desc") Alphabet Reverse
+                    button(
+                        class="btn btn-danger mt-2"
+                        sort-clear
+                    ) Clear
+    .card.mb-3
+        .card-header Filting and Findout
+        .card-body
             .row
                 +filter-status(filterStatuss)
-
     .card.mb-3
         .card-header Products Listing
             .card-body 
@@ -42,12 +64,13 @@ block main
                         tr
                             th
                                 input(type="checkbox" name="checkall")
-                            th STT
-                            th Hình ảnh
-                            th Tiêu đề
-                            th Giá
-                            th Trạng thái
-                            th Hành động
+                            th Serial number
+                            th Image
+                            th Title
+                            th Price 
+                            th Position
+                            th Status
+                            th Action
 
                     tbody
                         each item ,index in products

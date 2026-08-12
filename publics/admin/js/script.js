@@ -138,7 +138,7 @@ if(formchange){
 }
 
 //alert
-
+  
 const showalert = document.querySelector("[show-alert]");
 if(showalert){
     //console.log(showalert)
@@ -160,7 +160,36 @@ if(upload){
         }
     })
 }
-
+//sort
+const sort = document.querySelector("[sort]")
+if(sort){
+    let url = new URL(window.location.href);
+    const selectsort = sort.querySelector("[sort-select]");
+    const clearsort = sort.querySelector("[sort-clear]");
+    selectsort.addEventListener("change", (e) => {
+        const valuesort = e.target.value
+        const [key,value] = valuesort.split("-")
+        // console.log(key,value)
+        url.searchParams.set("sortkey",key);
+        url.searchParams.set("sortvalue",value);
+        window.location.href = url.href;
+    })
+    clearsort.addEventListener("click", () => {
+        url.searchParams.delete("sortkey");
+        url.searchParams.delete("sortvalue");
+        window.location.href = url.href;
+    })  
+    const crrkey = url.searchParams.get("sortkey");
+    // console.log(crrkey)
+    const crrvalue = url.searchParams.get("sortvalue");
+    if(crrkey && crrvalue){
+        const stringer = `${crrkey}-${crrvalue}`
+        // console.log(stringer)
+        const optionselected = sort.querySelector(`option[value='${stringer}']`)
+        // console.log(optionselected)
+        optionselected.selected = true;
+    }
+}
 
 
 

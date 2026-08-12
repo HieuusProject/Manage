@@ -21,6 +21,7 @@ router.post('/create',
 router.get('/edit/:id',controller.editer);
 router.patch('/edit/:id',
     upload.single('thumbnail'),
+    uploadCloudinary.upload,
     validate.createPost,
     controller.patchEdit
 );

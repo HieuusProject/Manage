@@ -1,0 +1,85 @@
+extends ../../layout/default.pug
+block main
+    h1 Products Category
+    .card.mb-3
+        .card-header Products Listing
+            .card-body 
+                .row
+                    .col-4
+                        a(
+                            href=`${prefixadmin}/products-category/create`
+                            class="btn btn-outline-success"
+                        ) + New Category
+                table(
+                    class = "table table-hover table-sm"
+                    checkbox-multi
+                )
+                    thead
+                        tr
+                            th
+                                input(type="checkbox" name="checkall")
+                            th Serial number
+                            th Image
+                            th Title
+                            th Position
+                            th Status
+                            th Action
+
+                    tbody
+                        each item ,index in records
+                            tr  
+                                td 
+                                    input(
+                                        type="checkbox" 
+                                        name = "id"
+                                        value = item.id
+                                    )
+                                td #{index + 1}
+                                td
+                                    img(
+                                        src=item.thumbnail
+                                        alt=item.title
+                                        width="100px"
+                                        height="auto"
+                                    )
+                                td 
+                                    a(
+                                        href=`/admin/products-category/detail/${item.id}`
+                                        class="titleFor"
+                                    ) #{item.title}
+                                td
+                                    input(
+                                        type="number"
+                                        value = item.position 
+                                        stype="width: 60px"
+                                        min="1"
+                                        name="position"
+                                    )
+                                td
+                                    if(item.status == "active")
+                                        a(
+                                            href="javascript:;" 
+                                            class="badge badge-success" 
+                                            buttonchangestt 
+                                            datastatus="active"
+                                            dataid = item.id
+                                        ) #{item.status}                      
+                                    else
+                                        a(
+                                            href="javascript:;" 
+                                            class="badge badge-danger" 
+                                            buttonchangestt 
+                                            datastatus="inactive"
+                                            dataid = item.id
+                                        ) #{item.status}
+                                td
+                                    a(
+                                        href=`/admin/products-category/edit/${item.id}`
+                                        class="btn btn-warning btn-sm"
+                                    ) Editing
+                                    button(
+                                        class="btn btn-danger btn-sm ml-1"
+                                        button-delete
+                                        data-id=item.id
+                                    ) Deletes
+    

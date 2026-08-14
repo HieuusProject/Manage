@@ -1,5 +1,6 @@
 tinymce.init({
     selector: 'textarea#desc',
+    plugins: "image",
     license_key: 'gpl'
 })
 // height: 500,

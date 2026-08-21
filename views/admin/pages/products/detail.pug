@@ -42,7 +42,7 @@ block main
 
                 .detail-field.mb-3
                     label.detail-field__label Description
-                    p.detail-field__value= product.description || "Chưa có mô tả"
+                    p.detail-field__value !{product.description} || "Nothing Right"
 
                 .detail-field.mb-4
                     label.detail-field__label Deleted

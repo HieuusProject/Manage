@@ -1,0 +1,30 @@
+extends ../../layout/default.pug
+include ../../mixins/childrenMainCate.pug
+block main
+    h1 Products Category
+    .card.mb-3
+        .card-header Products Listing
+            .card-body 
+                .row
+                    .col-4
+                        a(
+                            href=`${prefixadmin}/products-category/create`
+                            class="btn btn-outline-success"
+                        ) + New Category
+                table(
+                    class = "table table-hover table-sm"
+                    checkbox-multi
+                )
+                    thead
+                        tr
+                            th
+                                input(type="checkbox" name="checkall")
+                            th Serial number
+                            th Image
+                            th Title
+                            th Position
+                            th Status
+                            th Action
+
+                    tbody
+                        +treemain(records)

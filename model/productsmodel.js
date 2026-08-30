@@ -4,6 +4,10 @@ mongoose.plugin(slug);
 const productssche = new mongoose.Schema(
     {
         title: String,
+        Pcate_id: {
+            type: String,
+            default: ""
+        },
         description: String,
         price: Number,
         discountPercentage: Number,

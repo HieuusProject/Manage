@@ -99,9 +99,14 @@ module.exports.changeMulti = async (req, res) => {
     res.redirect(req.headers.referer || '/admin/products');
 };
 // res.send(`${status} - ${id}`);
-module.exports.create = (req,res) => {
+module.exports.create = async (req,res) => {
+    const records = await Products.find({
+        deleted: false
+    });
+    // const recording = createTreehelper.tree(records);
     res.render("admin/pages/products/create",{
-        pageTitle: "New"
+        pageTitle: "New",
+        record: records
     });
 }
 module.exports.createPost = async (req,res) => {

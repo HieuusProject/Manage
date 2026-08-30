@@ -23,6 +23,17 @@ block main
                 id="title"
                 name="title"
             )
+        div(class="form-group")
+            label(for="Pcate_id") Categories 
+            select(
+                name="Pcate_id"
+                id="Pcate_id"
+                class="form-control"
+            )
+                option(value="" ) --Categoies---
+                if(record)
+                    //-select-tree(record)
+
 
         div(class="form-group")
             label(for="desc") Description

@@ -7,12 +7,19 @@ const controller = require("../../controllers/admin/category.js");
 const upload = multer()
 router.get('/',controller.category);
 router.get('/create',controller.createCategory);
-router.post('/create',
+router.post(
+    '/create',
     upload.single('thumbnail'),
     uploadCloudinary.upload,
     // validate.createPost,
     controller.createCatePost
 );
-
-
+router.get('/edit/:id',controller.fixxing);
+router.patch(
+    '/edit/:id',
+    upload.single('thumbnail'),
+    uploadCloudinary.upload,
+    // validate.createPost,
+    controller.editPatch
+)
 module.exports = router;//xuat ham router ra

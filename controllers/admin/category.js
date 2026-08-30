@@ -26,3 +26,46 @@ module.exports.createCatePost = async (req,res) => {
     await record.save();
     res.redirect('/admin/products-category');
 }
+module.exports.fixxing = async (req,res) => {
+    try{
+        const id = req.params.id;
+        const findOne = await ProductsCategory.findOne(
+            {_id: id}
+        );
+        const records = await ProductsCategory.find({
+            deleted: false
+        });
+        // const recording = createTreehelper.tree(records);
+
+        res.render("admin/pages/product-category/editing",{
+            pageTitle: "Fixxing",
+            product: findOne
+            // recording: records
+        })
+    } catch{
+        res.redirect('/admin/products-category')
+        console.log("failed")
+    }
+
+}
+//mixins
+// mixin select-tree(items, level = 1, parent_id = "")
+//     each item in items
+//     - const prefix = Array(level + 1).join(" -- ")
+//     option(
+//         value=item.id
+//         selected=(item.id == parent_id ? true : false)
+//     ) #{/admin}#{item.title}
+//         if item.children && item.children.length > @
+//             +select-tree(item.children, level + 1, parent_id)
+module.exports.editPatch = async (req,res) => {
+    const id = req.params.id;
+    req.body.position = parseInt(req.body.position);
+    try{
+        await ProductsCategory.updateOne({ _id:id} , req.body)
+        console.log("successFull Updating")
+    } catch{
+        console.log("Failel Updating")
+    }
+    res.redirect('/admin/products-category');
+};  

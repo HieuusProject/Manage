@@ -1,0 +1,60 @@
+extends ../../layout/default.pug
+block main
+    div(class="text-right")
+    button(
+        type="submit"
+        class="btn btn-primary mb-3"
+        button-submit
+    ) Updating
+
+    table(
+        class="table table-hover table-sm"
+        table-permission
+    )
+        thead
+            tr
+                th Features
+                each item in records
+                    th(class="text-center") #{item.title}
+        tbody
+            tr(data-name = "id")
+                td
+                each item in records
+                    td(class="text-center")
+                        input(type="text" value=item.id)
+            tr
+                td(colspan="4")
+                    b Authorities
+            tr(data-name="products-category_view")
+                td View
+                each item in records
+                    td(class="text-center")
+                        input(type="checkbox")
+            tr(data-name="products-category_create")
+                td Create
+                each item in records
+                    td(class="text-center")
+                        input(type="checkbox")
+            tr(data-name="products-category_edit")
+                td Fixxing
+                each item in records
+                    td(class="text-center")
+                        input(type="checkbox")
+            tr(data-name="products-category_delete")
+                td Elininate
+                each item in records
+                    td(class="text-center")
+                        input(type="checkbox")
+    form(
+        id="form-change-permissions"
+        method="POST"
+        action="admin/roles/permissions?_method=PATCH"
+    )
+        div(class="form-group")
+            input(
+                type="text"
+                class="form-control"
+                id="ip-permissions"
+            )
+    script(src="/admin/js/roles.js")
+

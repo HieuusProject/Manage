@@ -13,4 +13,12 @@ router.post('/create',
     // validate.createPost,
     controller.createCatePost
 );
+router.get('/edit/:id',controller.fixxing);
+router.patch(
+    '/edit/:id',
+    upload.single('thumbnail'),
+    uploadCloudinary.upload,
+    // validate.createPost,
+    controller.editPatch
+);
 module.exports = router;//xuat ham router ra

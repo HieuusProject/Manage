@@ -1,17 +1,8 @@
 extends ../../layout/default.pug
 block main
-    - if (messages.error)
-        .message.info 
-            div(
-                class="alert alert-danger"
-                data-timeset = "5000"
-                show-alert
-            ) #{messages.error} 
-
-    h1(class="mb-4") New Product
+    h1(class="mb-4") New Category
     form(
-        action = `/admin/products/create`
-        id="form-create-product"
+        action = `/admin/products-category/create`
         enctype="multipart/form-data"
         method="POST"
     )
@@ -24,17 +15,13 @@ block main
                 name="title"
             )
         div(class="form-group")
-            label(for="Pcate_id") Categories 
-            select(
-                name="Pcate_id"
-                id="Pcate_id"
+            label(for="parent_id") Parent
+            textarea(
+                type="text"
                 class="form-control"
+                id="parent_id"
+                name="parent_id"
             )
-                option(value="" ) --Categoies---
-                if(record)
-                    //-select-tree(record)
-
-
         div(class="form-group")
             label(for="desc") Description
             textarea(
@@ -42,37 +29,6 @@ block main
                 id="desc"
                 name="description"
                 rows="5"
-            )
-
-        div(class="form-group")
-            label(for="price") Price
-            input(
-                type="number"
-                class="form-control"
-                id="price"
-                name="price"
-                value="0"
-                mim="0"
-            )
-        div(class="form-group")
-            label(for="discount") Discout Percent
-            input(
-                type="number"
-                class="form-control"
-                id="discount"
-                name="discountPercentage"
-                value="0"
-                min="0"
-            )
-        div(class="form-group")
-            label(for="stock") Stock
-            input(
-                type="number"
-                class="form-control"
-                id="stock"
-                name="stock"
-                value="0"
-                min="0"
             )
         div(
             class="form-group"
@@ -127,7 +83,7 @@ block main
                 class="btn btn-primary"
         ) Create
 
-    script(src="/admin/js/product.js")
+    script(src="")
 
 
 

@@ -1,16 +1,16 @@
 extends ../../layout/default.pug
 block main
-    - if (messages.error)
-        .message.info 
-            div(
-                class="alert alert-danger"
-                data-timeset = "5000"
-                show-alert
-            ) #{messages.error} 
+    //- - if (messages.error)
+    //-     .message.info 
+    //-         div(
+    //-             class="alert alert-danger"
+    //-             data-timeset = "5000"
+    //-             show-alert
+    //-         ) #{messages.error} 
 
-    h1(class="mb-4") New Product
+    h1(class="mb-4") Repairing Product
     form(
-        action = `/admin/products/create`
+        action = `/admin/products-category/edit/${product.id}?_method=PATCH`
         id="form-create-product"
         enctype="multipart/form-data"
         method="POST"
@@ -22,18 +22,18 @@ block main
                 class="form-control"
                 id="title"
                 name="title"
+                value=product.title
             )
         div(class="form-group")
-            label(for="Pcate_id") Categories 
+            label(for="parent_id") Parent Categories 
             select(
-                name="Pcate_id"
-                id="Pcate_id"
+                name="parent_id"
+                id="parent_id"
                 class="form-control"
             )
                 option(value="" ) --Categoies---
-                if(record)
-                    //-select-tree(record)
-
+                if(product)
+                    //-select-tree(product,1,Pcate.id)
 
         div(class="form-group")
             label(for="desc") Description
@@ -42,38 +42,7 @@ block main
                 id="desc"
                 name="description"
                 rows="5"
-            )
-
-        div(class="form-group")
-            label(for="price") Price
-            input(
-                type="number"
-                class="form-control"
-                id="price"
-                name="price"
-                value="0"
-                mim="0"
-            )
-        div(class="form-group")
-            label(for="discount") Discout Percent
-            input(
-                type="number"
-                class="form-control"
-                id="discount"
-                name="discountPercentage"
-                value="0"
-                min="0"
-            )
-        div(class="form-group")
-            label(for="stock") Stock
-            input(
-                type="number"
-                class="form-control"
-                id="stock"
-                name="stock"
-                value="0"
-                min="0"
-            )
+            ) #{product.description}
         div(
             class="form-group"
             upload-imagine
@@ -88,7 +57,7 @@ block main
                 upload-imagine-input
             )
             img(
-                src=""
+                src=product.thumbnail
                 upload-preview
                 class="previrew-up"
             )
@@ -101,6 +70,7 @@ block main
                 name="position"
                 placeholder="Automatical"
                 min="1"
+                value=product.position
             )
         div(class="form-group form-check form-check-inline")
             input(
@@ -109,7 +79,7 @@ block main
                 id="statusActive"
                 name="status"
                 value="active"
-                checked
+                checked=(product.status == "active" ? true : false)
             )
             label(for="statusActive" class="form-check-label") Active
         div(class="form-group form-check form-check-inline")
@@ -119,13 +89,14 @@ block main
                 id="statusInActive"
                 name="status"
                 value="inactive"
+                checked=(product.status == "inactive" ? true : false)
             )
             label(for="statusInActive" class="form-check-label") Inactive
         div(class="form-group")
             button(
                 type="submit"
                 class="btn btn-primary"
-        ) Create
+        ) Updating
 
     script(src="/admin/js/product.js")
 

@@ -99,3 +99,15 @@ module.exports.editPatch = async (req,res) => {
     }
     res.redirect('/admin/products-category');
 };  
+module.exports.deleted = async (req,res) => {
+    const id = req.params.id;
+    // const deleted = ({
+    //     _id:id
+    // })
+    await ProductsCategory.updateOne({ _id: id}, {
+        deleted: true ,
+        datedelete: new Date()
+    });   
+    res.redirect('/admin/products-category');
+
+}

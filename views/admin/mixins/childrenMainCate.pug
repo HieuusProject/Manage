@@ -22,31 +22,6 @@ mixin treemain(items,lever = 1)
                     class="titleFor"
                 ) #{prefix}#{item.title}
             td
-                input(
-                    type="number"
-                    value = item.position 
-                    stype="width: 60px"
-                    min="1"
-                    name="position"
-                )
-            td
-                if(item.status == "active")
-                    a(
-                        href="javascript:;" 
-                        class="badge badge-success" 
-                        buttonchangestt 
-                        datastatus="active"
-                        dataid = item.id
-                    ) #{item.status}                      
-                else
-                    a(
-                        href="javascript:;" 
-                        class="badge badge-danger" 
-                        buttonchangestt 
-                        datastatus="inactive"
-                        dataid = item.id
-                    ) #{item.status}
-            td
                 a(
                     href=`/admin/products-category/edit/${item.id}`
                     class="btn btn-warning btn-sm"
@@ -58,4 +33,11 @@ mixin treemain(items,lever = 1)
                 ) Deletes
         if item.children && item.children.length > 0
             +treemain(item.children, lever+1)
+
+    form(
+        action=""
+        method="POST"
+        id="id-deleted-form"
+        data-path="admin/products-category/delete"
+    )
 

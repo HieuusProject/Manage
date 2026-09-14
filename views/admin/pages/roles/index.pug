@@ -7,7 +7,6 @@ block main
         .card-body
             .row
                 .col-8
-                .col-4.text-right
                     a(
                         href= '/admin/roles/create'
                         class="btn btn-outline-success"
@@ -26,14 +25,22 @@ block main
                         each item,index in records
                             tr
                                 td #{index + 1}
-                                td #{item.title}
-                                td #{item.description}
-                                td
-                                    a(
-                                        class="btn btn-secondary btn-sm"
+                                td 
+                                    a(href=`/admin/roles/detail/${item.id}` style="color:black;") #{item.title}
+                                td 
+                                    p(
+                                        style="position:relative;display: inline;"
+                                        id="scripts"
+                                        privatep=item.id
+                                        data-path=`/admin/roles/detail/${item.id}`
+                                    ) #{item.description}
+                                    a(  
+                                        style="color:black; display:none; position:relative;"
+                                        id="displayed"
+                                        privatea=item.id
                                         href=`/admin/roles/detail/${item.id}`
-                                    ) Detail
-
+                                    ) ...More
+                                td
                                     a(
                                         class="btn btn-warning btn-sm ml-1"
                                         href=`/admin/roles/edit/${item.id}`
@@ -45,4 +52,5 @@ block main
                     else
                         tr
                             td(colspan="4" class="text-center") 404 Error not Found
+    script(src="/admin/js/permis.js")
 

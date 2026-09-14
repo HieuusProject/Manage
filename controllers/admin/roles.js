@@ -51,3 +51,12 @@ module.exports.permissionChoose = async (req,res) => {
         records: records
     });
 }
+
+module.exports.patchChossiePermission = async (req,res) => {
+    const permis = JSON.parse(req.body.permissions);
+    for(const item of permis){
+        await Role.updateOne({ _id: item.id}, { permission: item.permissions})
+    }
+    res.redirect("/admin/roles/permissions")
+    // res.send("quandong")
+}       

@@ -1,5 +1,7 @@
 extends ../../layout/default.pug
 block main
+    h1(class="mb-4") Permissions Adminisratoir
+    div(data-records = records)
     div(class="text-right")
     button(
         type="submit"
@@ -17,7 +19,7 @@ block main
                 each item in records
                     th(class="text-center") #{item.title}
         tbody
-            tr(data-name = "id")
+            tr(data-name = "id" class="d-none" )
                 td
                 each item in records
                     td(class="text-center")
@@ -48,13 +50,13 @@ block main
     form(
         id="form-change-permissions"
         method="POST"
-        action="admin/roles/permissions?_method=PATCH"
+        action="/admin/roles/permissions?_method=PATCH"
     )
-        div(class="form-group")
+        div(class="form-group" class="d-none")
             input(
                 type="text"
                 class="form-control"
-                id="ip-permissions"
+                name="permissions"
             )
-    script(src="/admin/js/roles.js")
+    script(src="/admin/js/permis.js")
 

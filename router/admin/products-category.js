@@ -22,4 +22,5 @@ router.patch(
     // validate.createPost,
     controller.editPatch
 )
+router.delete('/delete/:id',controller.deleted)
 module.exports = router;//xuat ham router ra

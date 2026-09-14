@@ -1,6 +1,4 @@
 console.log("this is fr script");
-//acctive/inactive
-
 const buttonstatus =  document.querySelectorAll("[button-status]");//lấy ra thành phần có key là button-status
 //console.log(buttonstatus);
 if(buttonstatus.length > 0){
@@ -190,6 +188,8 @@ if(sort){
         optionselected.selected = true;
     }
 }
+
+
 
 
 

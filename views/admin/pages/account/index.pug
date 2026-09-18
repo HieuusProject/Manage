@@ -1,0 +1,56 @@
+extends ../../layout/default.pug
+block main
+    h1(class="mb-4") Danh sách tài khoản
+
+    .card.mb-3
+        .card-header Danh sách
+        .card-body
+            .row
+                .col-8
+                    a(
+                    href = "/admin/account/create"
+                    class="btn btn-outline-success"
+                    ) + New
+                table(
+                    class = "table table-hover table-sm"
+                    checkbox-multi
+                )
+                    thead
+                        tr
+                            th Nm
+                            th Avatar
+                            th Fulname
+                            th Permissions
+                            th Email
+                            th Status
+                            th Editting 
+                            th Deleted
+
+                    tbody
+                        each item ,index in records
+                            tr  
+                                td #{index + 1}
+                                td
+                                    img(src=item.avatar style="border-radius: 40px ;width: 50px ;height:50px;")
+                                td 
+                                    a(
+                                        href=`/admin/products-category/detail/${item.id}`
+                                        class="titleFor"
+                                    ) #{item.fullname}
+                                th #{item.role.title}
+                                th #{item.email}
+                                th #{item.status}
+                                th
+                                    a(
+                                        href=`/admin/products-category/edit/${item.id}`
+                                        class="btn btn-warning btn-sm"
+                                    ) Editing                                
+                                th
+                                    button(
+                                        class="btn btn-danger btn-sm ml-1"
+                                        button-delete
+                                        data-id=item.id
+                                    ) Deletes
+    
+    
+

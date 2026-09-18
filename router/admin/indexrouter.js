@@ -1,6 +1,7 @@
 const dashboardRouter = require("./dashboardrouter.js");//lay cai vua export
 const productRouter = require("./productrouter.js");//lay cai vua export
 const categoryRouter = require("./categoryrouter.js");
+const accountRouter = require("./accountRouter.js");
 const system_config = require("../../config/system.js");
 const adminRoles = require('./routerRoles.js');
 module.exports = (app) => {
@@ -9,4 +10,5 @@ module.exports = (app) => {
     app.use(path_admin + "/products",productRouter);
     app.use(path_admin + "/products-category",categoryRouter);
     app.use(path_admin + "/roles",adminRoles);
+    app.use(path_admin + "/account",accountRouter);
 };

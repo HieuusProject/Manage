@@ -8,8 +8,8 @@ block main
             .row
                 .col-8
                     a(
-                    href = "/admin/account/create"
-                    class="btn btn-outline-success"
+                        href = "/admin/account/create"
+                        class="btn btn-outline-success"
                     ) + New
                 table(
                     class = "table table-hover table-sm"
@@ -42,7 +42,7 @@ block main
                                 th #{item.status}
                                 th
                                     a(
-                                        href=`/admin/products-category/edit/${item.id}`
+                                        href=`/admin/account/edit/${item.id}`
                                         class="btn btn-warning btn-sm"
                                     ) Editing                                
                                 th

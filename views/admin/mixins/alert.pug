@@ -1,0 +1,14 @@
+mixin alert(messages)
+    if messages && messages.error && messages.error.length > 0
+        div(
+            class="alert alert-danger"
+            data-timeset="5000"
+            show-alert
+        )= messages.error[0]
+
+    if messages && messages.success && messages.success.length > 0
+        div(
+            class="alert alert-success"
+            data-timeset="5000"
+            show-alert
+        )= messages.success[0]

@@ -25,6 +25,13 @@ module.exports.index = async (req,res) => {
     
 }
 
+module.exports.changePatch = async (req,res) => {
+    const change = req.params.status;
+    const id = req.params.id;
+    await Account.updateOne({ _id: id },{status: change})
+    res.redirect("/admin/account")
+}
+
 module.exports.create = async (req,res) => {
     let find = {
         deleted: false,

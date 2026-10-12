@@ -21,4 +21,5 @@ router.patch('/edit/:id',
     validate.editPatch,
     controller.editPatch
 );
+router.patch('/change-status/:status/:id',controller.changePatch);
 module.exports = router;//xuat ham router ra
